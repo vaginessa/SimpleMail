@@ -57,7 +57,7 @@ public class IMAP extends Thread implements Runnable {
     
     public void stopen() {
         try {
-            server.close();
+            this.server.close();
         } catch(IOException ioe) {}
     }
     
