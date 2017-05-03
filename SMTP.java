@@ -60,7 +60,7 @@ public class SMTP extends Thread implements Runnable {
     
     public void stopen() {
         try {
-            server.close();
+            this.server.close();
         } catch(IOException ioe) {}
     }
     
