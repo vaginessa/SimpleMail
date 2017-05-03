@@ -280,7 +280,7 @@ class GUI extends JFrame {
             IMAPButton.setText("IMAP Stop");
         }  
         if (action.equals("IMAP Stop")) {
-           imap.stopen();
+           imap.stop();
            IMAPButton.setText("IMAP Start");
         } 
     } 
@@ -292,7 +292,7 @@ class GUI extends JFrame {
             POPButton.setText("POP Stop");
         }  
         if (action.equals("POP Stop")) {
-           pop.stopen();
+           pop.stop();
            POPButton.setText("POP Start");
         }            
     }
@@ -304,7 +304,7 @@ class GUI extends JFrame {
             SMTPButton.setText("SMTP Stop");
         }  
         if (action.equals("SMTP Stop")) {
-           smtp.stopen();
+           smtp.stop();
            SMTPButton.setText("SMTP Start");
         }            
     }
