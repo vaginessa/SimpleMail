@@ -424,31 +424,28 @@ class PopServerThread extends Thread {
 
         String content = "";
         try {
-        File folder = new File("./mailroot/" + mailbox + "/" + username + "/" + the_folder);
-        File[] listOfFiles = folder.listFiles();
-        if(listOfFiles.length < 1) { return ""; }
-        int ic = 0;
-        for (int i = 0; i < listOfFiles.length; i++) {      
-            File file = listOfFiles[i];
-            if (file.isFile()) {
-                String zeile, ergebnis = "";        
-                try {            
-                    FileReader fr = new FileReader(file);
-                    BufferedReader br = new BufferedReader(fr);                            
-                    while((zeile = br.readLine()) != null ) {                
-                        if(zeile.startsWith("Subject:")) { 
-                            content += ic + " " + zeile.replace("Subject:","").trim();
-                            if(ic<listOfFiles.length-1) { 
-                                content+="\n"; 
-                            } 
-                            ic++; 
+            File folder = new File("./mailroot/" + mailbox + "/" + username + "/" + the_folder);
+            File[] listOfFiles = folder.listFiles();
+            if(listOfFiles.length < 1) { return ""; }
+            int message_id = 0;
+            for (int i = 0; i < listOfFiles.length; i++) {      
+                File file = listOfFiles[i];
+                if (file.isFile()) {
+                    String zeile, ergebnis = "";        
+                    try {            
+                        FileReader fr = new FileReader(file);
+                        BufferedReader br = new BufferedReader(fr);                            
+                        while((zeile = br.readLine()) != null ) {                
+                            if(zeile.startsWith("Subject:")) { 
+                                content += message_id + " " + zeile.replace("Subject:","").trim() + "\n";
+                                message_id++;
+                                break; 
+                            }                
                         }                
-                    }                
-                    br.close();           
-                } catch(Exception e) {}           
-                //content += ergebnis;           
-            }         
-        }
+                        br.close();           
+                    } catch(Exception e) {}                      
+                }         
+            }
         }catch(Exception e) {}
         return content;
         
