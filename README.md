@@ -1,2 +1,2 @@
 # SimpleMail
-Er unterstützt derzeit SMTP und POP. IMAP ist in Planung/Arbeit.
+Er unterstützt derzeit SMTP und POP. IMAP ist in Arbeit.
